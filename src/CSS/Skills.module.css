@@ -1,0 +1,47 @@
+.marqueeWrapper {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marqueeContainer {
+  display: flex;
+  gap: 30px;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.skillIcon {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-170%);
+  }
+}
+
+
+@media (min-width: 768px) {
+  .marqueeContainer {
+    gap: 60px;
+    animation: marquee 20s linear infinite;
+  }
+}
+
+@media (max-width: 767px) {
+  .skillIcon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+  .marqueeContainer {
+    gap: 20px;
+    animation: marquee 15s linear infinite;
+  }
+}
