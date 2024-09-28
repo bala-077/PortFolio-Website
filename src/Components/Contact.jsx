@@ -87,7 +87,7 @@ const Contact = () => {
     }, [showMessage]);
 
     return (
-        <div className={`w-full flex items-center justify-center ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} px-4 py-10 relative`}>
+        <div className={`w-full flex items-center justify-center ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} px-0 py-0 relative md:px-4 md:py-10`}>
             <div className={`max-w-4xl w-full bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg`}>
                 {/* Heading Section */}
                 <div className="text-center mb-8">
