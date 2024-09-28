@@ -5,6 +5,7 @@ import phone from '../Images/phone.png';
 import message from '../Images/message.png';
 
 const Contact = () => {
+    // State to hold message text and type
     const [messageData, setMessageData] = useState({ text: '', type: 'success' });
     const [showMessage, setShowMessage] = useState(false);
     const timeoutRef = useRef(null);
@@ -42,7 +43,7 @@ const Contact = () => {
         message: ''
     });
 
-    // Handle form input changes
+    // Handle input changes in the form
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -77,7 +78,7 @@ const Contact = () => {
         }
     };
 
-    // Manage popup auto-hide
+    // Automatically hide the popup after 3 seconds
     useEffect(() => {
         if (showMessage) {
             timeoutRef.current = setTimeout(() => setShowMessage(false), 3000);
@@ -86,16 +87,16 @@ const Contact = () => {
     }, [showMessage]);
 
     return (
-        <div className={`w-full flex items-center justify-center ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} px-0 py-10 relative ,md md:px-4`}>
+        <div className={`w-full flex items-center justify-center ${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-100'} px-4 py-10 relative`}>
             <div className={`max-w-4xl w-full bg-white dark:bg-gray-900 p-8 rounded-lg shadow-lg`}>
-                {/* Heading */}
+                {/* Heading Section */}
                 <div className="text-center mb-8">
                     <h1 className={`text-2xl mb-6 ${theme === 'dark' ? 'text-white' : 'text-[#003135]'} font-medium underline md:text-3xl`}>
                         Contact
                     </h1>
                 </div>
 
-                {/* Content Grid */}
+                {/* Main Content Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {/* Contact Details */}
                     <div className="space-y-6">
@@ -120,7 +121,7 @@ const Contact = () => {
                     {/* Contact Form */}
                     <div className="space-y-4">
                         <form onSubmit={handleSubmit} className="space-y-4">
-                            {/* Name Field */}
+                            {/* Name Input */}
                             <div>
                                 <label htmlFor="name" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                                     Name:
@@ -137,7 +138,7 @@ const Contact = () => {
                                 />
                             </div>
 
-                            {/* Email Field */}
+                            {/* Email Input */}
                             <div>
                                 <label htmlFor="email" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                                     Email:
@@ -154,7 +155,7 @@ const Contact = () => {
                                 />
                             </div>
 
-                            {/* Phone Field */}
+                            {/* Phone Input */}
                             <div>
                                 <label htmlFor="phone" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                                     Phone:
@@ -171,7 +172,7 @@ const Contact = () => {
                                 />
                             </div>
 
-                            {/* Message Field */}
+                            {/* Message Textarea */}
                             <div>
                                 <label htmlFor="message" className={`block text-sm font-medium ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                                     Message:
@@ -202,7 +203,7 @@ const Contact = () => {
                 </div>
             </div>
 
-            {/* Centered Popup */}
+            {/* Centered Popup Notification */}
             {showMessage && (
                 <div
                     className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
@@ -210,12 +211,14 @@ const Contact = () => {
                     aria-live="assertive"
                 >
                     <div
-                        className={`max-w-sm w-full bg-${messageData.type === 'success' ? 'green' : 'red'}-500 text-white px-6 py-4 rounded-lg shadow-lg transform transition-all duration-300 
+                        className={`max-w-sm w-full ${
+                            messageData.type === 'success' ? 'bg-green-500' : 'bg-red-500'
+                        } text-white px-6 py-4 rounded-lg shadow-lg transform transition-opacity duration-300 
                         ${showMessage ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}
                         `}
                     >
                         <div className="flex items-center">
-                            {/* Success or Error Icon */}
+                            {/* Icon based on message type */}
                             {messageData.type === 'success' ? (
                                 <svg
                                     className="w-6 h-6 mr-2"
